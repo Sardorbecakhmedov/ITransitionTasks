@@ -1,0 +1,28 @@
+﻿@model Task_4_Core.Entities.User
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+
+<h2 style="text-align:center; color: crimson">@ViewData["Title"]</h2>
+
+@if (Model != null)
+{
+    <div class="w-50 mx-auto p-3" style="background-color: gold" >
+        <h2>Username: @Model.UserName</h2>
+        <h3>Email: @Model.Email</h3>
+        <h4>RegistrationDate: @Model.RegistrationDate</h4>
+        <h4>LastLoginDate: @Model.LastLoginDate</h4>
+        <h4>UserRole: @Model.UserRole</h4>
+        <h5>IsBlocked: @(Model.IsBlocked ? "Blocked" : "Active") </h5>
+
+        <a class="btn btn-danger mt-2" asp-controller="Account" asp-action="Logout">Logout</a>
+    </div>
+}
+else
+{
+    <h2 style="text-align:center; color: black">User not found</h2>
+    <a class="btn btn-danger" asp-controller="Account" asp-action="Logout">Logout</a>
+}
+

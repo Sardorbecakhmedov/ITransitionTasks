@@ -17,9 +17,9 @@ public class Validations
     }
 
 
-    public static bool IsValidMove(string move, string[] moves)
+    public static bool IsValidMove(string? move, string[] moves)
     {
-        if (move == "?")
+        if (move is "?")
         {
             ViewTables.DisplayHelpTable(moves);
             return false;

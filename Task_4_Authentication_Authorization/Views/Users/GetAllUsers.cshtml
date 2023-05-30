@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "All Users";
+}
+
+<h2 style="text-align:center; color: crimson">@ViewData["Title"]</h2>
+
+@model List<User>
+
+<form asp-controller="Users" method="post">
+    <button asp-action="BlockUsers" type="submit" class="btn btn-danger mt-2">Block</button>
+    <button asp-action="UnblockUsers" type="submit" class="btn btn-success mt-2">Unblock</button>
+    <button asp-action="DeleteUsers" type="submit" class="btn btn-danger mt-2">Delete</button>
+    <table class="table">
+        <thead>
+        <tr>
+            <th><input type="checkbox" id="selectAll" /></th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Registration Date</th>
+            <th>Last Login Date</th>
+            <th>User role</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td><input type="checkbox" name="selectedUsers" value="@user.Id" /></td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@user.RegistrationDate</td>
+                <td>@user.LastLoginDate</td>
+                <td>@user.UserRole</td>
+                <td>@(user.IsBlocked ? "Blocked" : "Active")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</form>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#selectAll").change(function () {
+                $("input[name='selectedUsers']").prop('checked', $(this).prop("checked"));
+            });
+        });
+    </script>
+} 

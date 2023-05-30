@@ -1,32 +1,42 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Task_4_Authentication_Authorization.Models;
+using Task_4_Core.Contracts;
+using Task_4_Core.Entities;
+using Task_4_Core.ViewModels;
 
-namespace Task_4_Authentication_Authorization.Controllers
+namespace Task_4_Authentication_Authorization.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly IUserManager _userManager;
+
+    public HomeController(IUserManager userManager)
     {
-        private readonly ILogger<HomeController> _logger;
+        _userManager = userManager;
+    }
 
-        public HomeController(ILogger<HomeController> logger)
+    public async Task<IActionResult> Index()
+    {
+        if (!await _userManager.HasAdmin())
         {
-            _logger = logger;
+            var userModel = new RegisterViewModel
+            {
+                UserName = "Admin",
+                Email = "Admin@gmailcom",
+                Password = "Admin",
+            };
+
+            await _userManager.RegisterAsync(userModel, UserRole.Admin);
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
+    }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
+

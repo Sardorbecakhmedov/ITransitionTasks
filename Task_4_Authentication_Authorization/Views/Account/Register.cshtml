@@ -1,0 +1,34 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2 style="text-align:center; color: crimson">@ViewData["Title"]</h2>
+
+<div class="w-50 mx-auto p-3" style="background-color: gold">
+
+    <form asp-controller="Account" asp-action="Register" method="post">
+
+        <div class="form-group">
+            <label asp-for="UserName">Username</label>
+            <input type="text" class="form-control" id="UserName" placeholder="Enter your username: " name="UserName" required>
+            <span asp-validation-for="UserName"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email: " name="Email" required>
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input type="password" class="form-control" id="Password" placeholder="Enter your password: " name="Password" required>
+            <span asp-validation-for="Password"></span>
+        </div>
+
+        <button type="submit" class="mt-2 btn btn-success">Register</button>
+
+    </form>
+</div>

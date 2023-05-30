@@ -13,52 +13,13 @@ class Program
             return;
         }
 
-        string hmacKey = Hmac.GenerateKey();
-        string computerMove = Hmac.GetRandomMove(args);
-        string hmac = Hmac.CalculateHMAC(computerMove, hmacKey);
+        var (hmacKey, userMove, computerMove, isExit) = Startup.UserMove(args);
 
-        Console.WriteLine("HMAC: " + hmac);
-        ViewTables.DisplayMenu(args);
+        if(isExit)
+            return;
 
-        string userMove;
+        Startup.WinnerCheck(hmacKey, args, userMove, computerMove);
 
-        do
-        {
-            Console.Write("Enter your move: ");
-            userMove = Console.ReadLine();
-
-            if (userMove == "0")
-                return;
-
-            if (int.TryParse(userMove, out int moveNumber))
-            {
-                if (moveNumber >= 1 && moveNumber <= args.Length)
-                {
-                    userMove = args[moveNumber - 1];
-                }
-            }
-
-        } while (!Validations.IsValidMove(userMove, args));
-
-        Console.WriteLine("Your move: " + userMove);
-        Console.WriteLine("Computer move: " + computerMove);
-
-        int result = Validations.DetermineWinner(args.Length, Array.IndexOf(args, userMove), Array.IndexOf(args, computerMove));
-
-        if (result == 0)
-        {
-            Console.WriteLine("It's a draw!");
-        }
-        else if (result > 0)
-        {
-            Console.WriteLine("You win!");
-        }
-        else
-        {
-            Console.WriteLine("Computer wins!");
-        }
-
-        Console.WriteLine("Hmac key: " + hmacKey);
     }
 
 }

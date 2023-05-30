@@ -1,4 +1,4 @@
-namespace Task_4_Authentication_Authorization.Models
+namespace Task_4_Core.ViewModels
 {
     public class ErrorViewModel
     {

@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_2_Hash+Email", "Task_2_Hash+Email\Task_2_Hash+Email.csproj", "{AE9374D6-5A06-4BC3-8D0C-D83EB7D7BAA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task_2_Hash+Email", "Task_2_Hash+Email\Task_2_Hash+Email.csproj", "{AE9374D6-5A06-4BC3-8D0C-D83EB7D7BAA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_3_Game_rock_paper_scissors", "Task_3_Game_rock_paper_scissors\Task_3_Game_rock_paper_scissors.csproj", "{A6414ED7-19F4-4D17-B667-643B39735879}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task_3_Game_rock_paper_scissors", "Task_3_Game_rock_paper_scissors\Task_3_Game_rock_paper_scissors.csproj", "{A6414ED7-19F4-4D17-B667-643B39735879}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_4_Authentication_Authorization", "Task_4_Authentication_Authorization\Task_4_Authentication_Authorization.csproj", "{7BF28A17-8D1A-40FA-A3A0-E02FB9A8AC09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_4_Authentication_Authorization", "Task_4_Authentication_Authorization\Task_4_Authentication_Authorization.csproj", "{D2A6EF6D-4716-4DBE-8D65-C3E12CD32C4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CollectionTasks", "CollectionTasks", "{6352FC35-C5E6-408F-994F-60368A811658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_4_Core", "Task_4_Core\Task_4_Core.csproj", "{9771B8E3-8C9A-48D3-BA4A-22B841DFC76A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,13 +27,21 @@ Global
 		{A6414ED7-19F4-4D17-B667-643B39735879}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6414ED7-19F4-4D17-B667-643B39735879}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6414ED7-19F4-4D17-B667-643B39735879}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7BF28A17-8D1A-40FA-A3A0-E02FB9A8AC09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7BF28A17-8D1A-40FA-A3A0-E02FB9A8AC09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7BF28A17-8D1A-40FA-A3A0-E02FB9A8AC09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7BF28A17-8D1A-40FA-A3A0-E02FB9A8AC09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A6EF6D-4716-4DBE-8D65-C3E12CD32C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A6EF6D-4716-4DBE-8D65-C3E12CD32C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A6EF6D-4716-4DBE-8D65-C3E12CD32C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A6EF6D-4716-4DBE-8D65-C3E12CD32C4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9771B8E3-8C9A-48D3-BA4A-22B841DFC76A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9771B8E3-8C9A-48D3-BA4A-22B841DFC76A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9771B8E3-8C9A-48D3-BA4A-22B841DFC76A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9771B8E3-8C9A-48D3-BA4A-22B841DFC76A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE9374D6-5A06-4BC3-8D0C-D83EB7D7BAA3} = {6352FC35-C5E6-408F-994F-60368A811658}
+		{A6414ED7-19F4-4D17-B667-643B39735879} = {6352FC35-C5E6-408F-994F-60368A811658}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1614CF1E-7A54-41B2-B2FE-A95A79C06D16}
