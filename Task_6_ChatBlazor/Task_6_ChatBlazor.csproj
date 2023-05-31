@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\Index.razor.css" />
+    <None Remove="Shared\ChatMessage.razor.css" />
+    <None Remove="Shared\ChatUser.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\Index.razor.css" />
+    <Content Include="Shared\ChatMessage.razor.css" />
+    <Content Include="Shared\ChatUser.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MagicMvvm.Blazor" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.5" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Task_6_Blazor.Core\Task_6_ChatBlazor.Core.csproj" />
+    <ProjectReference Include="..\Task_6_Core\Task_6_ChatApi.Core.csproj" />
+  </ItemGroup>
+
+</Project>

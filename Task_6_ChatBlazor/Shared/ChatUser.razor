@@ -1,0 +1,17 @@
+﻿@using Task_6_ChatApi.Core.Entities
+
+
+<div class="d-flex align-items-start m-2">
+    <div class="avatar" alt="Avatar @User">
+        <span class="fw-bold fs-4 text-white">@User?.Username.ToUpper()?.First()</span>
+    </div>
+    <div class="flex-grow-1 ms-3">
+        @User
+        <div class="small"> Online</div>
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public User? User { get; set; }
+}
