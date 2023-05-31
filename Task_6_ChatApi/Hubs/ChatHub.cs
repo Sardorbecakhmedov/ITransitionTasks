@@ -9,7 +9,7 @@ public class ChatHub : Hub
 
     public async Task SendMessageAsync(Message message)
     {
-        await this.Clients.All.SendAsync("ReceiveMessage", message);
+        await this.Clients.All.SendAsync(HubConnectionPrefixName.ReceivedMessage, message);
     }
 
 
@@ -24,12 +24,12 @@ public class ChatHub : Hub
 
         _users.Add(connectionId, user);
 
-        await Clients.Others.SendAsync("Connected", user);
+        await Clients.Others.SendAsync(HubConnectionPrefixName.Connected, user);
 
         var message = new Message(user, $"{user.Username} joined the chat");
 
-        await Clients.Others.SendAsync("ReceivedMessage", message);
-        await Clients.Others.SendAsync("Connected", user);
+        await Clients.Others.SendAsync(HubConnectionPrefixName.ReceivedMessage, message);
+        await Clients.Others.SendAsync(HubConnectionPrefixName.Connected, user);
     }
 
     public IEnumerable<User> GetOnlineUsers()
@@ -50,7 +50,7 @@ public class ChatHub : Hub
 
         var msg = new Message(user, $"{user.Username} has left the chat");
 
-        await Clients.Others.SendAsync("ReceivedMessage", msg);
-        await Clients.Others.SendAsync("Disconnected", user);
+        await Clients.Others.SendAsync(HubConnectionPrefixName.ReceivedMessage, msg);
+        await Clients.Others.SendAsync(HubConnectionPrefixName.Disconnected, user);
     }
 }

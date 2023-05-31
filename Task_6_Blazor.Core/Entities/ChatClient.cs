@@ -10,7 +10,7 @@ public class ChatClient : IChatClient
 
     private bool _started;
     private User? _user;
-    private HubConnection _hubConnection;
+    private HubConnection _hubConnection = null!;
 
     public ChatClient(string hubUrl)
     {
@@ -33,7 +33,7 @@ public class ChatClient : IChatClient
             throw new InvalidOperationException("Client not started");
         }
 
-        return await _hubConnection.InvokeAsync<IEnumerable<User>>("GetOnlineUsers");
+        return await _hubConnection.InvokeAsync<IEnumerable<User>>(HubConnectionMethodsName.GetOnlineUsers);
     }
 
     public async Task SendMessageAsync(string message)
@@ -44,9 +44,8 @@ public class ChatClient : IChatClient
         }
 
         var msg = new Message(_user!, message);
-        await _hubConnection.SendAsync("SendMessageAsync", msg);
+        await _hubConnection.SendAsync(HubConnectionMethodsName.SendMessageAsync, msg);
     }
-
 
 
     public async Task StartAsync(User user)
@@ -59,24 +58,23 @@ public class ChatClient : IChatClient
         _hubConnection = new HubConnectionBuilder().WithUrl(_hubUrl).Build();
 
 
-        _hubConnection.On<Message>("ReceiveMessage", message =>
+        _hubConnection.On<Message>(HubConnectionPrefixName.ReceivedMessage, message =>
         {
                 OnMessageReceived?.Invoke(this, message);
         });
 
-        _hubConnection.On<User>("Connected", user =>
+        _hubConnection.On<User>(HubConnectionPrefixName.Connected, user1 =>
         {
-            OnConnected?.Invoke(this, user);
+            OnConnected?.Invoke(this, user1);
         });
 
-        _hubConnection.On<User>("Disconnected", user =>
+        _hubConnection.On<User>(HubConnectionPrefixName.Disconnected, user1 =>
         {
-            OnDisconnected?.Invoke(this, user);
+            OnDisconnected?.Invoke(this, user1);
         });
 
         await _hubConnection.StartAsync();
-
-        await _hubConnection.SendAsync("RegisterAsync", user);
+        await _hubConnection.SendAsync(HubConnectionMethodsName.RegisterAsync, user);
 
         _user = user;
         _started = true;
@@ -92,7 +90,7 @@ public class ChatClient : IChatClient
         await _hubConnection.StopAsync();
         await _hubConnection.DisposeAsync();
 
-        _hubConnection = null;
+        _hubConnection = null!;
         _started = false;
     }
 

@@ -3,8 +3,9 @@
 
 <PageTitle>Task_6 Chat</PageTitle>
 
+
 <div class="container">
-    @if (string.IsNullOrEmpty(Model.Error))
+    @if (!string.IsNullOrEmpty(Model.Error))
     {
         <div class="alert alert-danger alert-dismissible" role="alert">
             <span>@Model.Error</span>
@@ -26,7 +27,8 @@
     }
     else
     {
-        <h1 class="h3 mb-3">Chat Room</h1>
+        <h1><i> <span style="color:goldenrod"> Username:</span> @Model.CurrentUsername </i></h1>
+        <h1 class="h3 mb-3 mt-2">Chat Room</h1>
 
         <div class="card">
             <div class="row">

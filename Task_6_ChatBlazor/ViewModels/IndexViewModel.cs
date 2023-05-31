@@ -7,7 +7,7 @@ namespace Task_6_ChatBlazor.ViewModels;
 public class IndexViewModel : ViewModelBase
 {
     private readonly ChatClient _client;
-    public IndexViewModel( )
+    public IndexViewModel()
     {
         _client = new ChatClient("https://localhost:7157/chat");
 
